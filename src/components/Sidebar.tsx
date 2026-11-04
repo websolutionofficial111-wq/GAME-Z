@@ -115,15 +115,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Help / Discord quick link */}
         <div className="flex items-center justify-between px-1 text-xs text-slate-400">
-          <button
-            onClick={() => {
-              alert("GAME/Z Support: Competitive rules, bracket inquiries, and dispute resolution are handled via Official Discord #support.");
-            }}
-            className="flex items-center gap-1.5 hover:text-slate-300 transition-colors"
+          <a
+            href="tel:9083641195"
+            title="Helpline: 9083641195"
+            className="flex items-center gap-1.5 hover:text-cyan-300 transition-colors"
           >
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Help centre</span>
-          </button>
+            <span>Helpline: 9083641195</span>
+          </a>
           <span className="text-[10px] font-mono text-slate-400 flex items-center gap-1">
             <Sparkles className="w-3 h-3 text-cyan-400/80" /> v1.2
           </span>

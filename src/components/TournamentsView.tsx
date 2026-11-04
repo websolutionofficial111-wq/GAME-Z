@@ -74,13 +74,20 @@ export const TournamentsView: React.FC<TournamentsViewProps> = ({
           </p>
         </div>
 
-        {/* QR Code Card */}
+        {/* QR Code Card with User's Uploaded QR */}
         <div
           onClick={() => setShowQrModal(true)}
           className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 transition-all flex items-center gap-3 cursor-pointer shrink-0 shadow-lg group"
         >
-          <div className="w-14 h-14 bg-white rounded-lg p-1.5 flex items-center justify-center text-slate-950 group-hover:scale-105 transition-transform">
-            <QrCode className="w-full h-full text-slate-900" />
+          <div className="w-14 h-14 bg-white rounded-lg p-0.5 flex items-center justify-center text-slate-950 group-hover:scale-105 transition-transform overflow-hidden shadow-inner">
+            <img
+              src="/assets/aistudio/Screenshot_20261105-032839.FamApp__1__94378abf.png"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = '/gamez-qr.png';
+              }}
+              alt="Scan to join GAME/Z"
+              className="w-full h-full object-cover rounded"
+            />
           </div>
           <div>
             <span className="text-xs font-bold text-white block group-hover:text-cyan-300 transition-colors">
@@ -361,8 +368,15 @@ export const TournamentsView: React.FC<TournamentsViewProps> = ({
                 <X className="w-4 h-4" />
               </button>
             </div>
-            <div className="p-4 bg-white rounded-xl inline-block shadow-2xl">
-              <QrCode className="w-48 h-48 text-slate-950" />
+            <div className="p-2 bg-white rounded-2xl inline-block shadow-2xl max-w-[260px] mx-auto overflow-hidden">
+              <img
+                src="/assets/aistudio/Screenshot_20261105-032839.FamApp__1__94378abf.png"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = '/gamez-qr.png';
+                }}
+                alt="Scan to join GAME/Z on Mobile"
+                className="w-56 h-56 object-contain rounded-xl mx-auto"
+              />
             </div>
             <p className="text-xs text-slate-300">
               Scan with your mobile camera to sync matches, receive bracket notifications, and chat with your squad on the go.

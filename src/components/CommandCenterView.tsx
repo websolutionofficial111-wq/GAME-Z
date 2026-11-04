@@ -392,21 +392,21 @@ export const CommandCenterView: React.FC<CommandCenterViewProps> = ({
             </p>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 flex flex-col gap-2">
             <button
               onClick={() => {
-                if (challengeClaimed) {
-                  alert("Challenge already accepted! Your team is entered in the HyperX draw.");
-                } else {
-                  setChallengeClaimed(true);
-                  alert("HyperX Sponsored Challenge Accepted! Earn double RP in Campus Clash matches today.");
-                }
+                setChallengeClaimed(true);
               }}
-              className="px-4 py-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 font-bold text-xs transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40 font-bold text-xs transition-colors flex items-center gap-1.5 w-fit"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{challengeClaimed ? "Challenge Active" : "View challenge"}</span>
+              <span>{challengeClaimed ? "Challenge Active (2x RP)" : "Activate Challenge"}</span>
             </button>
+            {challengeClaimed && (
+              <p className="text-[11px] text-emerald-400 font-mono">
+                ✓ HyperX Challenge Activated! Earn double RP in Campus Clash today.
+              </p>
+            )}
           </div>
         </div>
       </div>
