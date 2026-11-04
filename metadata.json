@@ -1,0 +1,6 @@
+{
+  "name": "GAME/Z Esports",
+  "description": "Streamlined esports command center and tournament platform featuring match registration and interactive bracket viewer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,31 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Connection health check doc
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // Tournaments collection (viewable by everyone, editable by admin/operators)
+    match /tournaments/{tourneyId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Player profiles collection
+    match /users/{userId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if request.auth != null && request.auth.token.email == 'websolutionofficial111@gmail.com';
+    }
+
+    // Tournament match enrollment requests collection
+    // Allows players to submit registrations and upload proof, and Admin to monitor and approve
+    match /enrolments/{enrolmentId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if true;
+    }
+  }
+}

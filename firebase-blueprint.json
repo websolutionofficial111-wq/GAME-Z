@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User competitive profile and stats initialized to 0 for new players",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "gamerTag": { "type": "string", "maxLength": 50 },
+        "rank": { "type": "string", "maxLength": 50 },
+        "rankPoints": { "type": "number" },
+        "level": { "type": "number" },
+        "xp": { "type": "number" },
+        "matchesPlayed": { "type": "number" },
+        "wins": { "type": "number" },
+        "winRate": { "type": "number" },
+        "totalWinnings": { "type": "string", "maxLength": 50 },
+        "squadName": { "type": "string", "maxLength": 100 },
+        "squadPower": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "name", "rankPoints", "level", "xp"]
+    },
+    "EnrolmentRequest": {
+      "title": "EnrolmentRequest",
+      "description": "Tournament enrollment application with uploaded file proof and verification status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tournamentId": { "type": "string" },
+        "tournamentTitle": { "type": "string", "maxLength": 200 },
+        "userId": { "type": "string" },
+        "applicantName": { "type": "string", "maxLength": 100 },
+        "ign": { "type": "string", "maxLength": 100 },
+        "teamName": { "type": "string", "maxLength": 100 },
+        "mode": { "type": "string", "enum": ["solo", "squad"] },
+        "discordTag": { "type": "string", "maxLength": 100 },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "fileProofName": { "type": "string", "maxLength": 200 },
+        "fileProofUrl": { "type": "string" },
+        "submittedAt": { "type": "string" }
+      },
+      "required": ["id", "tournamentId", "applicantName", "ign", "mode", "status", "submittedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Individual player profiles"
+    },
+    "/enrolments/{enrolmentId}": {
+      "schema": { "$ref": "#/entities/EnrolmentRequest" },
+      "description": "Tournament match enrollment requests monitored by admin"
+    }
+  }
+}
